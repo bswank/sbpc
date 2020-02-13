@@ -15,7 +15,15 @@ function getCookie(name) {
 }
 
 // Generate human-readable list of authors from the array of authors provided by the API
-const authorsFormatter = new Intl.ListFormat('en', { style: 'long', type: 'conjunction' });
+function formatAuthors(authorsArray) {
+    if (Intl === void 0 || typeof Intl.ListFormat !== 'function') {
+        // Intl.ListFormat not supported (Safari/iOS Chrome/Safari)
+        return authorsArray.join('; ');
+    }
+
+    const authorsFormatter = new Intl.ListFormat('en', { style: 'long', type: 'conjunction' });
+    return authorsFormatter.format(authorsArray);
+}
 
 function handleAddBook() {
     const addBookButtons = document.querySelectorAll('#add-book-button');
@@ -49,15 +57,15 @@ function handleAddBook() {
                     'X-Requested-With': 'XMLHttpRequest'
                 },
                 body: formData
-            }
+            };
 
             fetch(endpoint, options)
                 .then((r) => r.json())
                 .then((result) => {
                     if (result.status === 200) {
-                        window.location = '/books/'
+                        window.location = '/books/';
                     } else {
-                        alert('Something has gone wrong. Please try again.')
+                        alert('Something has gone wrong. Please try again.');
                     }
                 });
         })
@@ -71,7 +79,7 @@ function handleAddBook() {
     const searchButton = document.querySelector('#search-books');
 
     form.addEventListener('submit', (event) => {
-        searchButton.innerHTML = 'Searching...'
+        searchButton.innerHTML = 'Searching...';
 
         event.preventDefault();
 
@@ -82,14 +90,14 @@ function handleAddBook() {
                 // I know...
                 'Authorization': '43822_7d36594b478c81f4aaed821554795aef'
             }
-        }
+        };
 
         fetch(`https://api2.isbndb.com/books/${searchValue}?pageSize=5`, options)
             .then((r) => r.json())
             .then((result) => {               
                 let html = '';
                 result.books.forEach(book => {
-                    const authors = authorsFormatter.format(book.authors);
+                    const authors = formatAuthors(book.authors);
                     
                     html += `
                         <div class="book">
@@ -103,14 +111,14 @@ function handleAddBook() {
                                 <button style="margin-top: 20px;" type="button" data-book="${book.image}&+${book.title}&+${authors}&+${book.isbn13}" id="add-book-button">Add to Book List</button>
                             </div>
                         </div>
-                    `
+                    `;
                 })
                 resultsDiv.innerHTML = html;
                 handleAddBook();
-                searchButton.innerHTML = 'Search Books'
+                searchButton.innerHTML = 'Search Books';
             })
             .catch(error => {
-                searchButton.innerHTML = 'Search Books'
+                searchButton.innerHTML = 'Search Books';
                 console.error(error);
             });
     })
