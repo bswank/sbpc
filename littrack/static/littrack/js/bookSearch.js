@@ -116,6 +116,10 @@ function handleAddBook() {
                 resultsDiv.innerHTML = html;
                 handleAddBook();
                 searchButton.innerHTML = 'Search Books'
+            })
+            .catch(error => {
+                searchButton.innerHTML = 'Search Books'
+                console.error(error);
             });
     })
 })();
