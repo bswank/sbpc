@@ -14,7 +14,7 @@ SECRET_KEY = '(b$f9c$v7=1o&eq=nixmiq6@ry7prxl7kc#!l)g+vn&@!nrz8d'
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    '127.0.0.1',
+    'sbpc.herokuapp.com',
 ]
 
 INTERNAL_IPS = [
