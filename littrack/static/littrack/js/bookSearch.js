@@ -79,7 +79,8 @@ function handleAddBook() {
 
         const options = {
             headers: {
-                'Authorization': process.env.ISBNDB_API_KEY
+                // I know...
+                'Authorization': '43822_7d36594b478c81f4aaed821554795aef'
             }
         }
 
