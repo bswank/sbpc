@@ -1,0 +1,32 @@
+{% extends 'littrack/layout.html' %}
+
+{% block title %}
+
+<h1>Edit {{ book.title }}</h1>
+
+{% endblock %}
+
+{% block contextual_actions %}
+    
+<p class="action"><a class="buttony-link" href="{% url 'my_books' %}">Back to Books</a></p>
+
+{% endblock %}
+
+{% block content %}
+
+<form method="POST">
+    {% csrf_token %}
+    {{ form }}
+    <button id="search-books" type="submit">Update Book</button>
+</form>
+
+<hr>
+
+<form action="/books/edit/delete/{{ book.id }}/" method="POST">
+    {% csrf_token %}
+    <button type="submit" class="danger">Remove Book</button>
+</form>
+
+<div style="margin-top: 25px;" id="books"></div>
+
+{% endblock %}

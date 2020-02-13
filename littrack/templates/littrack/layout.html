@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    {% load static %}
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link type="text/css" rel="stylesheet" href="{% static 'littrack/styles/normalize.css' %}">
+    <link type="text/css" rel="stylesheet" href="{% static 'littrack/styles/global.css' %}">
+    <link type="text/css" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600&display=swap" rel="stylesheet">
+    <title>LitTrack</title>
+  </head>
+  <body>
+    <header id="main-header">
+      <span class="logo"><a href="/">LitTrack</a></span>
+      <nav>
+        <ul>
+          <li><a href="/">Dashboard</a></li>
+          {% if user.is_authenticated %}
+          <li><a class="" href="/books">My Books</a></li>
+          <li><a href="/logout">Log Out</a></li>
+          {% endif %}
+          {% if not user.is_authenticated %}
+          <li><a href="/login">Log In</a></li>
+          <li><a href="/register">Register</a></li>
+          {% endif %}
+        </ul>
+      </nav>
+    </header>
+    {% if messages %}
+      {% for message in messages %}
+        <div class="flash">
+          <p>{{ message }}</p>
+        </div>
+      {% endfor %}
+    {% endif %}
+    <section id="content" class="{% if not request.path == '/books/' and not request.path == '/' %}squished{% endif %}">
+      <header class="section-header">
+        {% block title %}
+          <h1>{{ title }}</h1>
+        {% endblock %}
+        {% block contextual_actions %}
+        {% endblock %}
+      </header>
+      {% block content %}
+      {% endblock %}
+    </section>
+  </body>
+  {% block js %}
+  {% endblock %}
+</html>

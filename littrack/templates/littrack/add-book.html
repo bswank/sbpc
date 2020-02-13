@@ -1,0 +1,20 @@
+{% extends 'littrack/layout.html' %}
+
+{% block content %}
+
+<form method="POST" id="book-search">
+    {% csrf_token %}
+    {{ form }}
+    <button id="search-books" type="submit">Search Books</button>
+</form>
+
+<div style="margin-top: 25px;" id="books"></div>
+
+{% endblock %}
+
+{% block js %}
+
+{% load static %}
+<script src="{% static 'littrack/js/bookSearch.js' %}"></script>
+
+{% endblock %}

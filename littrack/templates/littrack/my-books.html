@@ -1,0 +1,40 @@
+{% extends 'littrack/layout.html' %}
+
+{% block contextual_actions %}
+    
+<p class="action"><a class="buttony-link" href="{% url 'add_book' %}">Add Book</a></p>
+
+{% endblock %}
+
+{% block content %}
+
+{% load custom_filters %}
+
+<div id="books">
+    {% if books %}
+        {% for book in books %}
+            <div class="book">
+                <div class="cover">
+                    <img src="{{ book.cover }}" alt="{{ book.title }} cover">
+                </div>
+                <div class="info">
+                    {% if book.rating %}
+                        <div class="rating">
+                            {% for i in book.rating|get_range %}
+                                <span>☆</span>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                    <p class="title"><strong><a target="_blank" href="https://isbndb.com/book/{{ book.isbn13 }}">{{ book.title }}</a></strong></p>
+                    <p class="authors">Written by {{ book.authors }}</p>
+                    <p class="isbn">ISBN13: {{ book.isbn13 }}</p>
+                    <p class="no-margin" style="margin-top: 20px;"><a class="buttony-link" href="/books/edit/{{ book.id }}">Rate, Edit, or Remove</a></p>
+                </div>
+            </div>
+        {% endfor %}
+    {% else %}
+        <p>Looks like you don't have any books just yet!</p>
+    {% endif %}
+</div>
+
+{% endblock %}

@@ -1,0 +1,13 @@
+{% extends 'littrack/layout.html' %}
+
+{% block title %}
+
+<h1>You've been successfully logged out. Don't forget to hire Brian. 👍</h1>
+
+{% endblock %}
+
+{% block content %}
+
+<p><a class="buttony-link" href="{% url 'index' %}">Go Home</a> or <a class="buttony-link" href="{% url 'login' %}">Log In</a></p>
+
+{% endblock %}

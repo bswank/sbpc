@@ -1,0 +1,50 @@
+{% extends 'littrack/layout.html' %}
+
+{% block content %}
+
+<h2>Highest Rated Books ⭐️</h2>
+<div id="books">
+    {% for book in highest_rated_books %}
+        <div class="book">
+            <div class="cover">
+                <img src="{{ book.cover }}" alt="{{ book.title }} cover">
+            </div>
+            <div class="info">
+                <p class="title"><strong><a target="_blank" href="https://isbndb.com/book/{{ book.isbn13 }}">{{ book.title }}</a></strong></p>
+                <p class="authors">Written by {{ book.authors }}</p>
+            </div>
+        </div>
+    {% endfor %}
+</div>
+
+<h2>Most Recently Added Books ⏰</h2>
+<div id="books">
+    {% for book in most_recent_books %}
+        <div class="book">
+            <div class="cover">
+                <img src="{{ book.cover }}" alt="{{ book.title }} cover">
+            </div>
+            <div class="info">
+                <p class="title"><strong><a target="_blank" href="https://isbndb.com/book/{{ book.isbn13 }}">{{ book.title }}</a></strong></p>
+                <p class="authors">Written by {{ book.authors }}</p>
+            </div>
+        </div>
+    {% endfor %}
+</div>
+
+<h2>Most Read Books 📖</h2>
+<div id="books">
+    {% for book in most_read_books %}
+        <div class="book">
+            <div class="cover">
+                <img src="{{ book.cover }}" alt="{{ book.title }} cover">
+            </div>
+            <div class="info">
+                <p class="title"><strong><a target="_blank" href="https://isbndb.com/book/{{ book.isbn13 }}">{{ book.title }}</a></strong></p>
+                <p class="authors">Written by {{ book.authors }}</p>
+            </div>
+        </div>
+    {% endfor %}
+</div>
+
+{% endblock %}

@@ -1,0 +1,252 @@
+body {
+    font-family: 'Open Sans', sans-serif;
+    line-height: 1.3;
+    color: #333;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+a {
+    display: inline-block;
+    color: inherit;
+    text-decoration: none;
+}
+
+hr {
+    margin: 25px 0;
+    border: none;
+    border-bottom: 2px solid #eee;
+}
+
+header#main-header {
+    display: flex;
+    padding: 15px 25px;
+    border-bottom: 1px solid #efefef;
+}
+
+header#main-header span.logo {
+    display: block;
+    font-weight: 600;
+    color: #0554ff;
+    font-size: 1.2em;
+    margin-right: auto;
+}
+
+header#main-header nav {
+    display: flex;
+}
+
+header#main-header nav ul {
+    display: flex;
+    list-style: none;
+    margin: auto 0;
+    padding: 0;
+}
+
+header#main-header nav ul li {
+    padding: 0;
+    margin: 0;
+    margin-left: 25px;
+}
+
+header#main-header nav ul li a {
+    color: #333;
+    font-size: .9em;
+}
+
+header#main-header nav ul li a:hover {
+    text-decoration: underline;
+}
+
+section#content {
+    padding: 25px;
+}
+
+section#content.squished {
+    margin: 0 auto;
+    max-width: 600px;
+}
+
+header.section-header {
+    display: flex;
+    padding-bottom: 25px;
+}
+
+header.section-header h1 {
+    flex: 1;
+    margin: 0;
+    font-size: 1.7em;
+}
+
+header.section-header .action {
+    margin: auto 0 auto 10px;
+}
+
+.buttony-link {
+    padding: 10px 15px;
+    background-color: #eee;
+    font-weight: 600;
+}
+
+.buttony-link.wide {
+    text-align: center;
+    width: 100%;
+}
+
+/* Site Flash */
+
+.flash {
+    padding: 10px 25px;
+    background-color: #192a42;
+}
+
+.flash p {
+    margin: 0;
+    text-align: center;
+    color: #fff;
+    font-weight: 600;
+    font-size: .9em;
+}
+
+/* Form Controls */
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 600;
+    color: #333;
+}
+
+input + label {
+    margin-top: 15px;
+}
+
+input[type=text],
+input[type=search],
+input[type=email],
+input[type=password],
+input[type=number] {
+    line-height: 1;
+    padding: 8px;
+    border: 2px solid #eee;
+    width: 100%;
+    min-width: 300px;
+}
+
+button {
+    display: block;
+    width: 100%;
+    background-color: #0554ff;
+    color: #fff;
+    border: none;
+    padding: 12px 25px;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 15px;
+}
+
+button.danger {
+    background-color: #e54b4b30;
+    color: #e54b4b;
+}
+
+button.danger:hover {
+    background-color: #e54b4b50;
+}
+
+button:hover {
+    background-color: #192a42;
+}
+
+/* Form Errors */
+
+ul.errorlist {
+    display: inline-block;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    margin-bottom: 15px;
+}
+
+ul.errorlist li {
+    background-color: #e54b4b10;
+    padding: 10px;
+    border: 1px solid #e54b4b;
+    color: #e54b4b;
+    font-size: .9em;
+    font-weight: 600;
+}
+
+/* Book Search Results */
+
+#books {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    grid-gap: 25px;
+}
+
+#books .book {
+    display: flex;
+    border: 2px solid #eee;
+    padding: 15px;
+}
+
+#books .book .cover {
+    width: 100px;
+    margin: auto 25px auto 0;
+}
+
+#books .book .cover img {
+    width: 100%;
+}
+
+#books .book .info {
+    flex: 1;
+    margin: auto 0;
+}
+
+#books .book .info .title {
+    font-size: 1.1em;
+    margin-top: 0;
+}
+
+#books .book .info .title a:hover {
+    text-decoration: underline;
+}
+
+#books .book .info .authors {
+    font-size: .9em;
+}
+
+#books .book .info .isbn {
+    font-size: .75em;
+}
+
+/* Rating Stars */
+
+.rating {
+    unicode-bidi: bidi-override;
+    margin-bottom: 5px;
+}
+
+.rating span {
+    display: inline-block;
+    position: relative;
+    width: 1em;
+}
+
+.rating span:before,
+.rating span ~ span:before {
+    content: "\2605";
+    position: absolute;
+    left: 0; 
+    color: #ffc603;
+}
+
+/* Utility */
+
+.no-margin {
+    margin: 0;
+}
