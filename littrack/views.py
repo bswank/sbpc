@@ -127,9 +127,9 @@ def register(request):
             user.last_name = last
             user.save()
 
-            authenticate(username=email, password=password)
+            messages.success(request, 'Your account has been created. Please log in.')
 
-            return HttpResponseRedirect('/')
+            return HttpResponseRedirect('/login')
 
     else:
         form = RegisterForm()

@@ -133,6 +133,9 @@ input[type=number] {
     border: 2px solid #eee;
     width: 100%;
     min-width: 300px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
 }
 
 button {
@@ -183,7 +186,7 @@ ul.errorlist li {
 
 #books {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
     grid-gap: 25px;
 }
 
