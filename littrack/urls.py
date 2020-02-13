@@ -11,5 +11,5 @@ urlpatterns = [
     url(r'^books/add/$', views.add_book, name='add_book'),
     url(r'^books/edit/[1-9]\d*/$', views.edit_book, name='edit_book'),
     url(r'^books/edit/delete/[1-9]\d*/$', views.delete_book, name='delete_book'),
-    # url(r'^books/add/isbndb-proxy/$', views.isbndb_proxy, name='isbndb_proxy'),
+    url(r'^books/export/$', views.export_books, name='export_books'),
 ]

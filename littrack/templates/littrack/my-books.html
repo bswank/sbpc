@@ -2,7 +2,7 @@
 
 {% block contextual_actions %}
     
-<p class="action"><a class="buttony-link" href="{% url 'add_book' %}">Add Book</a></p>
+<p class="action"><a target="_blank" class="buttony-link" href="{% url 'export_books' %}">Export as CSV</a> <a class="buttony-link" href="{% url 'add_book' %}">Add Book</a></p>
 
 {% endblock %}
 

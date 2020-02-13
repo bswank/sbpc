@@ -1,3 +1,4 @@
+import csv
 from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect, JsonResponse
 from django import forms
@@ -23,6 +24,22 @@ def index(request):
     }
 
     return render(request, 'littrack/index.html', context)
+
+def export_books(request):
+    output = []
+    
+    response = HttpResponse(content_type='text/csv')
+    writer = csv.writer(response)
+    
+    books = Book.objects.filter(reader=request.user.id).values('id', 'isbn13', 'title', 'authors', 'cover', 'rating', 'created_at')
+    
+    writer.writerow(['ID', 'ISBN13', 'Title', 'Authors', 'Cover Image URL', 'User Rating', 'Date Added to LitTrack'])
+    
+    for book in books:
+        output.append([book['id'], book['isbn13'], book['title'], book['authors'], book['cover'], book['rating'], book['created_at']])
+    writer.writerows(output)
+    
+    return response
 
 def my_books(request):
     books = Book.objects.filter(reader=request.user.id).order_by('-created_at')
@@ -94,11 +111,6 @@ def add_book(request):
         }
 
         return render(request, 'littrack/add-book.html', context)
-
-# def isbndb_proxy(request):
-#     url = request.GET['url']
-
-#     return JsonResponse({ 'hello': url })
 
 def register(request):
     if request.method == 'POST':

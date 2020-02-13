@@ -84,14 +84,6 @@ function handleAddBook() {
             }
         }
 
-        // const proxy = '/books/add/isbndb-proxy/?url=https://api2.isbndb.com/books/${searchValue}?pageSize=5'
-
-        // fetch(proxy, options)
-        //     .then((r) => r.json())
-        //     .then((result) => {
-        //         console.log(result);
-        //     });
-
         fetch(`https://api2.isbndb.com/books/${searchValue}?pageSize=5`, options)
             .then((r) => r.json())
             .then((result) => {               
