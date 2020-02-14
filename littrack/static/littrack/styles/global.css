@@ -90,6 +90,12 @@ header.section-header .action {
     font-weight: 600;
 }
 
+@media (max-width: 600px) {
+    .buttony-link {
+        font-size: 14px;
+    }
+}
+
 .buttony-link.wide {
     text-align: center;
     width: 100%;
@@ -148,6 +154,12 @@ button {
     font-weight: 600;
     cursor: pointer;
     margin-top: 15px;
+}
+
+@media (max-width: 600px) {
+    button {
+        font-size: 14px;
+    }
 }
 
 button.danger {
