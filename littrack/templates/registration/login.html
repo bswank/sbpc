@@ -9,8 +9,13 @@
 {% block content %}
 
 <form method="post">
+    <!-- Using custom form here so we can use a custom label for the username field -->
     {% csrf_token %}
-    {{ form }}
+    {{ form.non_field_errors }}
+    <label for="{{ form.username.id_for_label }}">Email Address:</label>
+    {{ form.username }}
+    <label for="{{ form.password.id_for_label }}">Password:</label>
+    {{ form.password }}
     <button type="submit">Log In</button>
     <p><a class="buttony-link wide" href="{% url 'password_reset' %}">Reset Password</a></p>
 </form>
