@@ -16,6 +16,10 @@ function getCookie(name) {
 
 // Generate human-readable list of authors from the array of authors provided by the API
 function formatAuthors(authorsArray) {
+    if (!authorsArray || !authorsArray.length) {
+        return 'N/A';
+    }
+
     if (Intl === void 0 || typeof Intl.ListFormat !== 'function') {
         // Intl.ListFormat not supported (Safari/iOS Chrome/Safari)
         return authorsArray.join('; ');
